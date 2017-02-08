@@ -16,9 +16,8 @@ doc.css("tbody tr")[1..-1].each do |row|
   end
 
   if columns[ROLE]
-    full_role = columns[ROLE].text.strip
-    abbr_role = full_role.rpartition(" ").first
-    all_roles[abbr_role] += 1
+    role = columns[ROLE].text.strip
+    all_roles[role] += 1
   end
 
 end
