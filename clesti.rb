@@ -15,11 +15,9 @@ doc.css("tbody tr")[1..-1].each do |row|
     # puts name
   end
 
-  if columns[ROLE]
-    role = columns[ROLE].text.strip
-    all_roles[role] += 1
-  end
-
+  next unless columns[ROLE]
+  role = columns[ROLE].text.strip
+  all_roles[role] += 1
 end
 
 all_roles.sort.to_h.each do |role, count|
