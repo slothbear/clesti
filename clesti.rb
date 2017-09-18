@@ -3,6 +3,7 @@ require "nokogiri"
 NAME = 0
 ROLE = 2
 
+# get input
 doc = Nokogiri::HTML(File.open("clesti.html"))
 
 all_roles = Hash.new(0)
