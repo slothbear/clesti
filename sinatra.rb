@@ -1,4 +1,9 @@
 require "nokogiri"
+require "sinatra"
+
+get "/" do
+  "Welcome to clesti"
+end
 
 NAME = 0
 ROLE = 2
