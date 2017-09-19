@@ -2,7 +2,7 @@ require "nokogiri"
 require "sinatra"
 
 get "/" do
-  "Welcome to clesti"
+  haml :home
 end
 
 NAME = 0
