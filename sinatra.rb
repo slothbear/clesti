@@ -5,11 +5,20 @@ get "/" do
   haml :home
 end
 
+post "/" do
+  begin
+    haml collect_roles(params['rolehtml'])
+  rescue
+    "apologies, but we encountered an error with your html: #{$!}<br>#{caller.first(2)}"
+  end
+
+end
+
 NAME = 0
 ROLE = 2
 
-def collect_roles
-  doc = Nokogiri::HTML(File.open("tmp/clesti.html"))
+def collect_roles(html)
+  doc = Nokogiri::HTML(html)
 
   all_roles = Hash.new(0)
 
@@ -26,7 +35,9 @@ def collect_roles
     all_roles[role] += 1
   end
 
+  result = Array.new
   all_roles.sort.to_h.each do |role, count|
-    puts "#{count}, #{role}"
+    result << [count, role]
   end
+  result
 end

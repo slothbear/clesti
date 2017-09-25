@@ -1,1 +1,8 @@
-Saluton al clesti.
+%form{method: "post", action: ""}
+  .form-group
+    %label{for: "rolehtml"} role report HTML
+    %input#rolehtml.form-control{name: "rolehtml",
+      :placeholder => "paste your report HTML here",
+      type: "text"}
+
+  %input.btn.btn-primary{type: "submit", value: "gather roles"}
