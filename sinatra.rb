@@ -7,7 +7,7 @@ end
 
 post "/" do
   begin
-    haml collect_roles(params['rolehtml'])
+    collect_roles(params['rolehtml']).join("<br>")
   rescue
     "apologies, but we encountered an error with your html: #{$!}<br>#{caller.first(2)}"
   end
@@ -37,7 +37,7 @@ def collect_roles(html)
 
   result = Array.new
   all_roles.sort.to_h.each do |role, count|
-    result << [count, role]
+    result << "#{count}, #{role}"
   end
   result
 end
