@@ -3,6 +3,7 @@ require "pry-byebug"
 
 NAME = 0
 ROLE = 2
+PROJECTS_FOR_ROLE = YAML.load(DATA.read)
 
 roles_max = [3, 2, 3, 2, 3, 1, 2, 2, 0, 2]
 
@@ -32,7 +33,7 @@ end
 def count_roles(html)
   doc = Nokogiri::HTML(html)
   member = ""
-  project_options = YAML.load(DATA.read)
+  project_options = PROJECTS_FOR_ROLE
 
   doc.css("tbody tr")[1..-1].each do |row|
     columns = row.css("td")
@@ -43,14 +44,12 @@ def count_roles(html)
       # report on current member
       member = member_column # new member!
       roles_completed = []
-      DATA.rewind
-      project_options = YAML.load(DATA.read)
+      project_options = PROJECTS_FOR_ROLE
     end
 
     role_raw = columns[ROLE].text.strip
     role = role_raw.split("#").first
 
-    puts project_options
     next unless project_options.key?(role)
 
     puts "#{member}   #{role}"
