@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.5"
+ruby "2.5.1"
 
 gem "haml"
 gem "nokogiri", "~> 1.8.2"
